@@ -1,0 +1,389 @@
+\documentclass[UTF8,a4paper,10pt]{ctexart}
+\usepackage[left=2.50cm, right=2.50cm, top=2.50cm, bottom=2.50cm]{geometry}
+
+% -- text font --
+% compile using Xelatex
+
+%\setmainfont{Microsoft YaHei}  % 微软雅黑
+%\setmainfont{YouYuan}  % 幼圆    
+%\setmainfont{NSimSun}  % 新宋体
+%\setmainfont{KaiTi}    % 楷体
+%\setmainfont{SimSun}   % 宋体
+%\setmainfont{SimHei}   % 黑体
+
+\usepackage{times}
+\usepackage{diagbox}
+%\usepackage{mathpazo}
+%\usepackage{fourier}
+%\usepackage{charter}
+%\usepackage{helvet}
+
+\usepackage{amsmath, amsfonts, amssymb} % math equations, symbols
+\usepackage[english]{babel}
+\usepackage{color}      % color content
+\usepackage{graphicx}   % import figures
+\usepackage{url}        % hyperlinks
+\usepackage{bm}         % bold type for equations
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{epstopdf}
+\usepackage{epsfig}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+%\renewcommand{\algorithmicrequire}{ \textbf{Input:}}     % use Input in the format of Algorithm  
+%\renewcommand{\algorithmicensure}{ \textbf{Initialize:}} % use Initialize in the format of Algorithm  
+%\renewcommand{\algorithmicreturn}{ \textbf{Output:}}     % use Output in the format of Algorithm  
+
+\def\deriv{d\,}
+\usepackage{fancyhdr}   % 设置页眉、页脚
+\pagestyle{fancy}
+\lhead{2019概率论统计分析及量测技术作业答案}
+\chead{}
+\rhead{第6周}
+\cfoot{\thepage}
+   
+
+\usepackage{hyperref}   % bookmarks
+\hypersetup{colorlinks, bookmarks, unicode} % unicode
+
+
+\title{第四章作业}
+%\author{ 作者 Author \thanks{作者介绍 Brief introduction} }
+%\date{\today}
+
+\begin{document}
+
+
+
+\section{课本习题}
+
+\subsection{P114/7}
+\noindent(1)
+
+(i)
+\begin{align}
+    E(Y) &= E(2X) = \int_{-\infty}^\infty 2xf(x)\,\text{d}x \nonumber \\
+         &= 2 \int_0^\infty x e^{-x}\,\text{d}x = 2;
+\end{align}
+
+(ii)
+\begin{equation}
+    E(Y) = E(e^{-2X}) = \int_0^\infty e^{-2x}\cdot e^{-x}\,\text{d}x = {1\over3}.\\
+\end{equation}
+
+\noindent(2)
+
+$X_i$的分布函数为
+\begin{equation}
+    F(x)= \left\{
+    \begin{array}{lr}
+    0,& x<0, \\
+    x, & 0\leq x<1, \\
+    1, & x\geq1 . 
+    \end{array}
+    \right.
+\end{equation}
+
+(i)
+
+$X_1, X_2, \cdots, X_n$ 独立，所以$U=\max\{X_1,X_2,\cdots,X_n\}$的分布函数为
+\begin{equation}
+    F_U(u)= \left\{
+    \begin{array}{lr}
+    0,& u<0, \\
+    u^n, & 0\leq u<1, \\
+    1, & u\geq1 . 
+    \end{array}
+    \right.
+\end{equation}
+
+$U$的概率密度函数为
+\begin{equation}
+    f_U(u)= \left\{
+    \begin{array}{lr}
+        nu^{n-1}, & 0<u<1, \\
+        0, & \text{其他}.
+    \end{array}
+    \right.
+\end{equation}
+
+\begin{equation}
+    E(U) = \int_0^1 u \cdot nu^{n-1}\,\text{d}u = {n\over n+1}.
+\end{equation}
+
+(ii)
+
+
+$V=\min\{X_1,X_2,\cdots,X_n\}$的分布函数为
+\begin{equation}
+    F_V(v)= \left\{
+    \begin{array}{lr}
+    0,& v<0, \\
+    1-(1-v)^n, & 0\leq v<1, \\
+    1, & v\geq1 . 
+    \end{array}
+    \right.
+\end{equation}
+
+$V$的概率密度函数为
+\begin{equation}
+    f_V(v)= \left\{
+    \begin{array}{lr}
+        n(1-v)^{n-1}, & 0<v<1, \\
+        0, & \text{其他}.
+    \end{array}
+    \right.
+\end{equation}
+
+\begin{equation}
+    E(V) = \int_0^1 v \cdot n(1-v)^{n-1}\,\text{d}v = {1\over n+1}.
+\end{equation}
+
+\subsection{P115/10}
+\noindent(1)
+
+由对称性知
+\begin{equation}
+    E({X^2\over X^2+Y^2}) = E({Y^2\over X^2+Y^2}).
+\end{equation}
+
+而
+\begin{equation}
+    E({X^2\over X^2+Y^2}) + E({Y^2\over X^2+Y^2}) = E(1) = 1.
+\end{equation}
+
+所以
+\begin{equation}
+    E({X^2\over X^2+Y^2}) = E({Y^2\over X^2+Y^2}) = {1\over2}.
+\end{equation}
+
+\noindent(2)
+
+$X$与$Y$独立，因而$(X,Y)$的联合概率密度函数为
+\begin{equation}
+    f(x,y) = {1\over 2\pi\sigma^2}e^{-{x^2+y^2\over 2\sigma^2}} .
+\end{equation}
+
+原点到$(X,Y)$的距离为$R = \sqrt{X^2+Y^2}$，期望为
+\begin{equation}
+    E(R) = \int_{-\infty}^\infty\int_{-\infty}^\infty \sqrt{X^2+Y^2} {1\over 2\pi\sigma^2}e^{-{x^2+y^2\over 2\sigma^2}} \, \text{d}x\text{d}y.
+\end{equation}
+
+换成极坐标系
+\begin{align}
+    E(R) &= \int_0^{2\pi}\text{d}\theta \int_0^\infty {r\over 2\pi \sigma^2}e^{-{r^2\over 2\sigma^2}}\,r\text{d}r = \sigma \sqrt{\pi\over2}.
+\end{align}
+
+
+\subsection{P115/12}
+\begin{align}
+    E(S) = E\left(\frac{\pi d^2}{4}\right) &= \int_a^b \frac{\pi d^2}{4}\frac{1}{b - a} \text{d} d \nonumber \\
+                                           &= \frac{\pi(a^2 + ab + b^2)}{12}.
+\end{align}
+
+\subsection{P115/15}
+设
+\begin{equation}
+    X_i = \left\{
+    \begin{array}{lr}
+    1,& \mbox{第$i$个球放入了第$i$号盒子}, \\
+    0, & \mbox{第$i$个球未放入第$i$号盒子},
+    \end{array}
+    \right.
+\end{equation}
+则$X_i$满足0-1分布，$P\{X_i = 1\} = \displaystyle\frac{1}{n}$，$P\{X_i = 0\} = 1-\displaystyle\frac{1}{n}$，因此
+\begin{equation}
+    E(X) = \sum_i E(X_i) = n\cdot\frac{1}{n} = 1.
+\end{equation}
+
+\subsection{P116/20}
+\begin{align}
+    E(X) &= \sum_{k = 1}^{+\infty}kp(1-p)^{k-1} \nonumber \\
+         &= p\sum_{k = 1}^{+\infty}k(1-p)^{k-1} \nonumber \\
+         &= p\sum_{k = 1}^{+\infty}\frac{\text{d}}{\text{d} (1 - p)}(1 - p)^k \nonumber \\
+         &= p\frac{\text{d}}{\text{d} (1 - p)}\left(\sum_{k = 1}^{+\infty}(1 - p)^k\right) \nonumber \\
+         &= p\cdot\frac{1}{p^2} = \frac{1}{p},\\
+    E(X(X + 1)) &= \sum_{k = 1}^{+\infty}k(k + 1)p(1-p)^{k-1} \nonumber \\
+                &= p\sum_{k = 1}^{+\infty}\frac{\text{d}^2}{\text{d} (1 - p)^2}(1 - p)^{k+1} \nonumber \\
+                &= p\frac{\text{d}^2}{\text{d} (1 - p)^2}\left(\sum_{k = 1}^{+\infty}(1 - p)^{k+1}\right) \nonumber \\
+                &= \frac{2}{p^2}, \\
+    D(X) &= E(X^2) - [E(X)]^2 \nonumber \\
+         &= E(X(X + 1)) - E(X) - [E(X)]^2 \nonumber \\
+         &= \frac{2}{p^2} - \frac{1}{p} - \frac{1}{p^2} \nonumber \\
+         &= \frac{1 - p}{p^2}.
+\end{align}
+
+
+
+
+\subsection{P117/28}
+\begin{align}
+    f_X(x) =& \int_{-\sqrt{1 - x^2}}^{+\sqrt{1 - x^2}}f(x, y)\deriv y \nonumber \\
+           =& \frac{2}{\pi}\sqrt{1 - x^2}, \\
+    f_Y(y) =& \int_{-\sqrt{1 - y^2}}^{+\sqrt{1 - y^2}}f(x, y)\deriv x \nonumber \\
+           =& \frac{2}{\pi}\sqrt{1 - y^2}, \\
+    E[X] =& \int_{-1}^{1}xf_X(x)\deriv x \nonumber \\
+         =& 0, \\
+    E[Y] =& \int_{-1}^{1}yf_Y(y)\deriv y \nonumber \\
+         =& 0,\\
+    E[XY] =& \int_{-1}^{1}\deriv x\int_{-\sqrt{1 - x^2}}^{+\sqrt{1 - x^2}}xyf(x, y)\deriv y \nonumber \\
+          =& 0,\\
+\end{align}
+因此$E[XY] = E[X]E[Y]$，则$\mathrm{cov}(X,Y) = 0, \rho = 0$，$X$与$Y$不相关。但显然$f_X(x)f_Y(y) \not= f(x,y)$，因此$X$与$Y$不独立。
+
+
+\subsection{P117/32}
+\begin{align}
+    E[X] &= \int_{0}^2\deriv x\int_0^2xf(x,y)\deriv y \nonumber \\
+         &= \frac{7}{6}, \\
+    E[Y] &= \int_{0}^2\deriv x\int_0^2yf(x,y)\deriv y \nonumber \\
+         &= \frac{7}{6}, \\
+    E[XY] &= \int_{0}^2\deriv x\int_0^2xyf(x,y)\deriv y \nonumber \\
+          &= \frac{4}{3}, \\
+    \mathrm{cov}(X,Y) &= E[XY] - E[X]E[Y] = -\frac{1}{36}, \\
+    E[X^2] &= \int_{0}^2\deriv x\int_0^2x^2f(x,y)\deriv y \nonumber \\
+           &= \frac{5}{3}, \\
+    E[Y^2] &= \int_{0}^2\deriv x\int_0^2y^2f(x,y)\deriv y \nonumber \\
+           &= \frac{5}{3}, \\
+    D[X] &= E[X^2] - (E[X])^2 = \frac{11}{36}, \\
+    D[Y] &= E[Y^2] - (E[Y])^2 = \frac{11}{36}, \\
+    \rho &= \frac{\mathrm{cov}(X, Y)}{\sqrt{D[X]}\sqrt{D[Y]}} = -\frac{1}{11}, \\
+    D[X + Y] &= D[X] + D[Y] + 2\mathrm{cov}(X, Y) = \frac{5}{9}.
+\end{align}
+
+\subsection{P117/33}
+由于$X$，$Y$相互独立，$\rho_{XY} = 0$，则
+\begin{align}
+    E[Z_1] &= \alpha E[X] + \beta E[Y] = (\alpha + \beta)\mu, \\
+    E[Z_2] &= \alpha E[X] - \beta E[Y] = (\alpha - \beta)\mu, \\
+    E[Z_1Z_2] &= E[\alpha^2X^2 - \beta^2 Y^2] = (\alpha^2 - \beta^2)(\mu^2 + \sigma^2), \\
+    D[Z_1] &= \alpha^2 D[X] + \beta^2 D[Y] = (\alpha^2 + \beta^2)\sigma^2, \\
+    D[Z_2] &= \alpha^2 D[X] + \beta^2 D[Y] = (\alpha^2 + \beta^2)\sigma^2,
+\end{align}
+因此
+\begin{equation}
+    \rho_{Z_1Z_2} = \frac{E[Z_1Z_2] - E[Z_1]E[Z_2]}{\sqrt{D[Z_1]}\sqrt{D[Z_2]}} =\frac{\alpha^2 - \beta^2}{\alpha^2 + \beta^2}.
+\end{equation}
+
+\subsection{P117/34}
+(1)
+\begin{align}
+    E[X^2] &= D[X] + (E[X])^2 = 4, \\
+    E[Y^2] &= D[Y] + (E[Y])^2 = 16, \\
+    E[XY] &= \rho_{XY}\sqrt{D[X]}\sqrt{D[Y]} + E[X]E[Y] = -4,
+\end{align}
+因此
+\begin{align}
+    E[W] &= E[a^2X^2 + 6aXY + 9Y^2] \nonumber \\
+         &= a^2E[X^2] + 6aE[XY] + 9E[Y^2] \nonumber \\
+         &= 4(a^2 - 6a + 36),
+\end{align}
+对上式求极值，得到：当$a = 3$时，$E[W]$取最小值108。
+
+(2)
+\begin{align}
+    \mathrm{cov}(W,V) &= E[WV] - E[W]E[V]  \nonumber \\
+                 &= E[X^2 - a^2Y^2] - E[X + aY]E[X - aY] \nonumber \\
+                 &= E[X^2] - a^2E[Y^2] - (E[X] + aE[Y])(E[X] - aE[Y]) \nonumber \\
+                 &= \sigma_X^2 + \mu_X^2 - a^2\sigma_Y^2 - a^2\mu_Y^2 - (\mu_X^2 - a^2\mu_Y^2) \nonumber \\
+                 &= \sigma_X^2 - a^2\sigma_Y^2,
+\end{align}
+当$a^2 = \displaystyle\frac{\sigma_X^2}{\sigma_Y^2}$时，$\mathrm{cov}(W,V)=0$，即$\rho_{WV} = 0$。同时由于$W,V$是服从二维正态分布的随机变量的线性组合，因此$W,V$也服从二维正态分布。其相关系数$\rho = 0$说明它们相互独立。
+
+
+\subsection{P117/37}
+(1)若$E(V^2)=0$，则$D(V)=0$，从而$P\{V=0\}=1$， $E(VW)=0$，不等式取等号。
+
+$E(W^2)=0$时，同理。
+
+(2)若$E(V^2)>0, E(W^2)>0$，考虑实变量$t$的函数：
+\begin{equation}
+    q(t)=E[(V+tW)^2] = E(V^2) +2tE(VW)+t^2E(W^2).
+\end{equation}
+对于任意$t$，$q(t)\geq0$, $E(W^2)>0$，所以二次三项式$q(t)$的判别式
+\begin{equation}
+    \Delta = 4[E(VW)]^2-4E(V^2)E(W^2)\leq0,
+\end{equation}
+
+即
+\begin{equation}
+    [E(VW)]^2 \leq E(V^2) E(W^2).
+\end{equation}
+
+取等条件为$\Delta=0$, 即$q(t)=0$有一个根。此时$t= -E(VW)/E(W^2)$。
+\begin{equation}
+    V = -t W =  {E(VW)\over E(W^2)} W.
+\end{equation}
+
+即当$V=c W$ 时，等号成立($c$为任一常数)。
+
+\section{补充题}
+
+\subsection{}
+设$X$为三个人中生日在第一季度的人数，$X = 0, 1, 2, 3$，则$X\sim b(3, 0.25)$，因此$X$的分布律为
+\begin{center}
+    \begin{tabular}{c|cccc}
+        $X$ & 0 & 1 & 2 & 3 \\
+        \hline
+        $p_k$ & $\frac{27}{64}$ & $\frac{27}{64}$ & $\frac{9}{64}$ & $\frac{1}{64}$
+    \end{tabular}
+\end{center}
+
+因此$X$的数学期望为
+\begin{equation}
+    E(X) = \sum_{k}kp_k = 0.75.
+\end{equation}
+
+\subsection{}
+(1) 
+\begin{align}
+    E\left(\frac{1}{x}\right) &= \int_{\alpha}^{\beta} \frac{1}{x}\frac{1}{\beta - \alpha} \text{d} x \nonumber \\
+                              &= \frac{\ln(\beta/\alpha)}{\beta - \alpha}.
+\end{align}
+
+(2)
+\begin{align}
+    1 / E(x) &= 1 / \int_{\alpha}^{\beta} x \frac{1}{\beta - \alpha} \text{d} x \nonumber \\
+             &= \frac{2}{\alpha + \beta}.
+\end{align}
+
+\subsection{}
+(1)
+\begin{align}
+    a + 0.2 + b + 0.1 &= 1, \\
+    E(x) = -a + 0.2 + 2b + 0.3 &= 1,
+\end{align}
+解得
+\begin{equation}
+    a = 0.3,~b = 0.4.
+\end{equation}
+
+(2) 随机变量$Y = \displaystyle\frac{1}{X}$的分布律为
+\begin{center}
+    \begin{tabular}{c|cccc}
+        $Y = \frac{1}{X}$ & -1 & $\frac{1}{3}$ & $\frac{1}{2}$ & 1 \\
+        \hline
+        $p_k$ & 0.3 & 0.1 & 0.4 & 0.2 
+    \end{tabular}
+\end{center}
+
+则$E(Y) = \displaystyle\sum_{k}kp_k = \displaystyle\frac{2}{15}$，
+\begin{align}
+    D(Y) &= \sum_k (k - E(Y))^2p_k \nonumber \\
+         &= 0.593.
+\end{align}
+
+\subsection{}
+由柯西-施瓦茨不等式
+\begin{equation}
+    E({1\over X_2}) E(X_2) = E(({1\over \sqrt{X_2}})^2) E((\sqrt{X_2})^2)\geq E(1)^2 = 1.
+\end{equation}
+
+等号成立当且仅当存在常数，$\sqrt{X_2} = c/\sqrt{X_2}$，即$X_2=c$时成立。$X_1,X_2$独立，则$X_1, 1/X_2$也独立，所以
+\begin{equation}
+    E(X_1/X_2) = E(X_1)E(1/X_2) \geq E(X_1)/E(X_2) = 1.
+\end{equation}
+
+等号成立当且仅当$X_1, X_2$只取一个常数$c$时成立。
+
+\end{document}

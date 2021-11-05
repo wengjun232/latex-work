@@ -1,0 +1,482 @@
+
+\documentclass[UTF8,a4paper,10pt]{ctexart}
+\usepackage[left=2.50cm, right=2.50cm, top=2.50cm, bottom=2.50cm]{geometry}
+\usepackage{times}
+\usepackage{diagbox}
+\usepackage{amsmath, amsfonts, amssymb} % math equations, symbols
+\usepackage[english]{babel}
+\usepackage{color}      % color content
+\usepackage{graphicx}   % import figures
+\usepackage{url}        % hyperlinks
+\usepackage{bm}         % bold type for equations
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{epstopdf}
+\usepackage{epsfig}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\def\deriv{d\,}
+\usepackage{fancyhdr}   % 设置页眉、页脚
+\pagestyle{fancy}
+\lhead{2021概率论统计分析及量测技术作业参考答案}
+\chead{}
+\rhead{第四章：随机变量的数字特征}
+\cfoot{\thepage}
+   
+
+\usepackage{hyperref}   % bookmarks
+\hypersetup{colorlinks, bookmarks, unicode} % unicode
+
+
+\title{第四章作业}
+%\author{ 作者 Author \thanks{作者介绍 Brief introduction} }
+%\date{\today}
+
+\begin{document}
+\section{课本习题}
+\subsection{P116/7}
+ (1) 设随机变量 $X$ 的概率密度为
+$$
+f(x)= \begin{cases}\mathrm{e}^{-x}, & x>0 \\ 0, & x \leqslant 0\end{cases}
+$$
+求 (i) $Y=2 X$, (ii) $Y=\mathrm{e}^{-2 X}$ 的数学期望.
+
+(2) 设随机变量 $X_{1}, X_{2}, \cdots, X_{n}$ 相互独立,且都服从 $(0,1)$ 上的均匀分布. (i) 求 $U=$ $\max \left\{X_{1}, X_{2}, \cdots, X_{n}\right\}$ 的数学期望, (ii)求 $V=\min \left\{X_{1}, X_{2}, \cdots, X_{n}\right\}$ 的数学期望.
+
+
+解：\noindent(1)
+
+(i)
+\begin{align}
+    E(Y) &= E(2X) = \int_{-\infty}^\infty 2xf(x)\,\text{d}x \nonumber \\
+         &= 2 \int_0^\infty x e^{-x}\,\text{d}x = 2;
+\end{align}
+
+(ii)
+\begin{equation}
+    E(Y) = E(e^{-2X}) = \int_0^\infty e^{-2x}\cdot e^{-x}\,\text{d}x = {1\over3}.\\
+\end{equation}
+
+\noindent(2)
+
+$X_i$的分布函数为
+\begin{equation}
+    F(x)= \left\{
+    \begin{array}{lr}
+    0,& x<0, \\
+    x, & 0\leq x<1, \\
+    1, & x\geq1 . 
+    \end{array}
+    \right.
+\end{equation}
+
+(i)
+
+$X_1, X_2, \cdots, X_n$ 独立，所以$U=\max\{X_1,X_2,\cdots,X_n\}$的分布函数为
+\begin{equation}
+    F_U(u)= \left\{
+    \begin{array}{lr}
+    0,& u<0, \\
+    u^n, & 0\leq u<1, \\
+    1, & u\geq1 . 
+    \end{array}
+    \right.
+\end{equation}
+
+$U$的概率密度函数为
+\begin{equation}
+    f_U(u)= \left\{
+    \begin{array}{lr}
+        nu^{n-1}, & 0<u<1, \\
+        0, & \text{其他}.
+    \end{array}
+    \right.
+\end{equation}
+
+\begin{equation}
+    E(U) = \int_0^1 u \cdot nu^{n-1}\,\text{d}u = {n\over n+1}.
+\end{equation}
+
+(ii)
+
+
+$V=\min\{X_1,X_2,\cdots,X_n\}$的分布函数为
+\begin{equation}
+    F_V(v)= \left\{
+    \begin{array}{lr}
+    0,& v<0, \\
+    1-(1-v)^n, & 0\leq v<1, \\
+    1, & v\geq1 . 
+    \end{array}
+    \right.
+\end{equation}
+
+$V$的概率密度函数为
+\begin{equation}
+    f_V(v)= \left\{
+    \begin{array}{lr}
+        n(1-v)^{n-1}, & 0<v<1, \\
+        0, & \text{其他}.
+    \end{array}
+    \right.
+\end{equation}
+
+\begin{equation}
+    E(V) = \int_0^1 v \cdot n(1-v)^{n-1}\,\text{d}v = {1\over n+1}.
+\end{equation}
+\subsection{p117/12}
+某车间生产的圆盘直径在区间 $(a, b)$ 上服从均匀分布,试求圆盘面积的数学期望.
+
+解：
+\begin{align}
+    E(S) = E\left(\frac{\pi d^2}{4}\right) &= \int_a^b \frac{\pi d^2}{4}\frac{1}{b - a} \text{d} d \nonumber \\
+                                           &= \frac{\pi(a^2 + ab + b^2)}{12}.
+\end{align}
+
+\subsection{p117/15}
+将 $n$ 只球 $(1 \sim n$ 号)随机地放进 $n$ 个盒子 $(1 \sim n$ 号)中去,一个盒子装一只球.若一只 求装入与球同号的盒子中,则称为一个配对.记 $X$ 为总的配对数,求 $E(X)$.
+
+解：设
+\begin{equation}
+    X_i = \left\{
+    \begin{array}{lr}
+    1,& \mbox{第$i$个球放入了第$i$号盒子}, \\
+    0, & \mbox{第$i$个球未放入第$i$号盒子},
+    \end{array}
+    \right.
+\end{equation}
+则$X_i$满足0-1分布，$P\{X_i = 1\} = \displaystyle\frac{1}{n}$，$P\{X_i = 0\} = 1-\displaystyle\frac{1}{n}$，因此
+\begin{equation}
+    E(X) = \sum_i E(X_i) = n\cdot\frac{1}{n} = 1.
+\end{equation}
+
+
+\newpage
+\subsection{p117/20}
+设随机变量 $X$ 服从几何分布,其分布律为
+$$
+P\{X=k\}=p(1-p)^{k-1}, \quad k=1,2, \cdots
+$$
+其中 $0<p<1$ 是常数. 求 $E(X), D(X)$.
+
+解：
+\begin{align}
+    E(X) &= \sum_{k = 1}^{+\infty}kp(1-p)^{k-1} \nonumber \\
+         &= p\sum_{k = 1}^{+\infty}k(1-p)^{k-1} \nonumber \\
+         &= p\sum_{k = 1}^{+\infty}\frac{\text{d}}{\text{d} (1 - p)}(1 - p)^k \nonumber \\
+         &= p\frac{\text{d}}{\text{d} (1 - p)}\left(\sum_{k = 1}^{+\infty}(1 - p)^k\right) \nonumber \\
+         &= p\cdot\frac{1}{p^2} = \frac{1}{p},\\
+    E(X(X + 1)) &= \sum_{k = 1}^{+\infty}k(k + 1)p(1-p)^{k-1} \nonumber \\
+                &= p\sum_{k = 1}^{+\infty}\frac{\text{d}^2}{\text{d} (1 - p)^2}(1 - p)^{k+1} \nonumber \\
+                &= p\frac{\text{d}^2}{\text{d} (1 - p)^2}\left(\sum_{k = 1}^{+\infty}(1 - p)^{k+1}\right) \nonumber \\
+                &= \frac{2}{p^2}, \\
+    D(X) &= E(X^2) - [E(X)]^2 \nonumber \\
+         &= E(X(X + 1)) - E(X) - [E(X)]^2 \nonumber \\
+         &= \frac{2}{p^2} - \frac{1}{p} - \frac{1}{p^2} \nonumber \\
+         &= \frac{1 - p}{p^2}.
+\end{align}
+
+\subsection{p118/28}
+设二维随机变量 $(X, Y)$ 的概率密度为
+$$
+f(x, y)= \begin{cases}\frac{1}{\pi}, & x^{2}+y^{2} \leqslant 1 \\ 0, & \text { 其他. }\end{cases}
+$$
+试验证 $X$ 和 $Y$ 是不相关的,但 $X$ 和 $Y$ 不是相互独立的.
+
+解：
+\begin{align}
+    f_X(x) =& \int_{-\sqrt{1 - x^2}}^{+\sqrt{1 - x^2}}f(x, y)\deriv y \nonumber \\
+           =& \frac{2}{\pi}\sqrt{1 - x^2}, \\
+    f_Y(y) =& \int_{-\sqrt{1 - y^2}}^{+\sqrt{1 - y^2}}f(x, y)\deriv x \nonumber \\
+           =& \frac{2}{\pi}\sqrt{1 - y^2}, \\
+    E[X] =& \int_{-1}^{1}xf_X(x)\deriv x \nonumber \\
+         =& 0, \\
+    E[Y] =& \int_{-1}^{1}yf_Y(y)\deriv y \nonumber \\
+         =& 0,\\
+    E[XY] =& \int_{-1}^{1}\deriv x\int_{-\sqrt{1 - x^2}}^{+\sqrt{1 - x^2}}xyf(x, y)\deriv y \nonumber \\
+          =& 0,\\
+\end{align}
+因此$E[XY] = E[X]E[Y]$，则$\mathrm{cov}(X,Y) = 0, \rho = 0$，$X$与$Y$不相关。但显然$f_X(x)f_Y(y) \not= f(x,y)$，因此$X$与$Y$不独立。
+
+
+\subsection{p119/32}
+设随机变量 $(X, Y)$ 具有概率密度
+$$
+f(x, y)= \begin{cases}\frac{1}{8}(x+y), & 0 \leqslant x \leqslant 2,0 \leqslant y \leqslant 2 \\ 0, & \text { 其他. }\end{cases}
+$$
+求 $E(X), E(Y), \operatorname{Cov}(X, Y), \rho_{X Y}, D(X+Y)$
+
+解：
+\begin{align}
+    E[X] &= \int_{0}^2\deriv x\int_0^2xf(x,y)\deriv y \nonumber \\
+         &= \frac{7}{6}, \\
+    E[Y] &= \int_{0}^2\deriv x\int_0^2yf(x,y)\deriv y \nonumber \\
+         &= \frac{7}{6}, \\
+    E[XY] &= \int_{0}^2\deriv x\int_0^2xyf(x,y)\deriv y \nonumber \\
+          &= \frac{4}{3}, \\
+    \mathrm{cov}(X,Y) &= E[XY] - E[X]E[Y] = -\frac{1}{36}, \\
+    E[X^2] &= \int_{0}^2\deriv x\int_0^2x^2f(x,y)\deriv y \nonumber \\
+           &= \frac{5}{3}, \\
+    E[Y^2] &= \int_{0}^2\deriv x\int_0^2y^2f(x,y)\deriv y \nonumber \\
+           &= \frac{5}{3}, \\
+    D[X] &= E[X^2] - (E[X])^2 = \frac{11}{36}, \\
+    D[Y] &= E[Y^2] - (E[Y])^2 = \frac{11}{36}, \\
+    \rho &= \frac{\mathrm{cov}(X, Y)}{\sqrt{D[X]}\sqrt{D[Y]}} = -\frac{1}{11}, \\
+    D[X + Y] &= D[X] + D[Y] + 2\mathrm{cov}(X, Y) = \frac{5}{9}.
+\end{align}
+
+
+\subsection{p119/33}
+设随机变量 $X \sim N\left(\mu, \sigma^{2}\right), Y \sim N\left(\mu, \sigma^{2}\right)$, 且设 $X, Y$ 相互独立, 试求 $Z_{1}=\alpha X+\beta Y$ 和 $Z_{2}=\alpha X-\beta Y$ 的相关系数(其中 $\alpha, \beta$ 是不为零的常数).
+
+解：由于$X$，$Y$相互独立，$\rho_{XY} = 0$，则
+\begin{align}
+    E[Z_1] &= \alpha E[X] + \beta E[Y] = (\alpha + \beta)\mu, \\
+    E[Z_2] &= \alpha E[X] - \beta E[Y] = (\alpha - \beta)\mu, \\
+    E[Z_1Z_2] &= E[\alpha^2X^2 - \beta^2 Y^2] = (\alpha^2 - \beta^2)(\mu^2 + \sigma^2), \\
+    D[Z_1] &= \alpha^2 D[X] + \beta^2 D[Y] = (\alpha^2 + \beta^2)\sigma^2, \\
+    D[Z_2] &= \alpha^2 D[X] + \beta^2 D[Y] = (\alpha^2 + \beta^2)\sigma^2,
+\end{align}
+因此
+\begin{equation}
+    \rho_{Z_1Z_2} = \frac{E[Z_1Z_2] - E[Z_1]E[Z_2]}{\sqrt{D[Z_1]}\sqrt{D[Z_2]}} =\frac{\alpha^2 - \beta^2}{\alpha^2 + \beta^2}.
+\end{equation}
+
+\subsection{p119/34}
+(1) 设随机变量 $W=(a X+3 Y)^{2}, E(X)=E(Y)=0, D(X)=4, D(Y)=16, \rho_{X Y}=-0.5$.
+求常数 $a$ 使 $E(W)$ 为最小,并求 $E(W)$ 的最小值.
+
+(2) 设随机变量 $(X, Y)$ 服从二维正态分布,且有 $D(X)=\sigma_{X}^{2}, D(Y)=\sigma_{Y}^{2} .$ 证明当 $a^{2}=$ $\sigma_{X}^{2} / \sigma_{\mathrm{Y}}^{2}$ 时,, 随机变量 $W=X-a Y$ 与 $V=X+a Y$ 相互独立.
+
+解：(1)
+\begin{align}
+    E[X^2] &= D[X] + (E[X])^2 = 4, \\
+    E[Y^2] &= D[Y] + (E[Y])^2 = 16, \\
+    E[XY] &= \rho_{XY}\sqrt{D[X]}\sqrt{D[Y]} + E[X]E[Y] = -4,
+\end{align}
+因此
+\begin{align}
+    E[W] &= E[a^2X^2 + 6aXY + 9Y^2] \nonumber \\
+         &= a^2E[X^2] + 6aE[XY] + 9E[Y^2] \nonumber \\
+         &= 4(a^2 - 6a + 36),
+\end{align}
+对上式求极值，得到：当$a = 3$时，$E[W]$取最小值108。
+
+(2)
+\begin{align}
+    \mathrm{cov}(W,V) &= E[WV] - E[W]E[V]  \nonumber \\
+                 &= E[X^2 - a^2Y^2] - E[X + aY]E[X - aY] \nonumber \\
+                 &= E[X^2] - a^2E[Y^2] - (E[X] + aE[Y])(E[X] - aE[Y]) \nonumber \\
+                 &= \sigma_X^2 + \mu_X^2 - a^2\sigma_Y^2 - a^2\mu_Y^2 - (\mu_X^2 - a^2\mu_Y^2) \nonumber \\
+                 &= \sigma_X^2 - a^2\sigma_Y^2,
+\end{align}
+当$a^2 = \displaystyle\frac{\sigma_X^2}{\sigma_Y^2}$时，$\mathrm{cov}(W,V)=0$，即$\rho_{WV} = 0$。同时由于$W,V$是服从二维正态分布的随机变量的线性组合，因此$W,V$也服从二维正态分布。其相关系数$\rho = 0$说明它们相互独立。
+
+\subsection{p119/37}
+ 对于两个随机变量 $V, W$, 若 $E\left(V^{2}\right), E\left(W^{2}\right)$ 存在,证明
+$$
+[E(V W)]^{2} \leqslant E\left(V^{2}\right) E\left(W^{2}\right)
+$$
+这一不等式称为柯西一施瓦茨(Cauchy-Schwarz)不等式.
+提示:考虑实变量 $t$ 的函数
+$$
+q(t)=E\left[(V+t W)^{2}\right]=E\left(V^{2}\right)+2 t E(V W)+t^{2} E\left(W^{2}\right)
+$$
+
+证明：
+
+(1)若$E(V^2)=0$，则$D(V)=0$，从而$P\{V=0\}=1$， $E(VW)=0$，不等式取等号。
+
+$E(W^2)=0$时，同理。
+
+(2)若$E(V^2)>0, E(W^2)>0$，考虑实变量$t$的函数：
+\begin{equation}
+    q(t)=E[(V+tW)^2] = E(V^2) +2tE(VW)+t^2E(W^2).
+\end{equation}
+对于任意$t$，$q(t)\geq0$, $E(W^2)>0$，所以二次三项式$q(t)$的判别式
+\begin{equation}
+    \Delta = 4[E(VW)]^2-4E(V^2)E(W^2)\leq0,
+\end{equation}
+
+即
+\begin{equation}
+    [E(VW)]^2 \leq E(V^2) E(W^2).
+\end{equation}
+
+取等条件为$\Delta=0$, 即$q(t)=0$有一个根。此时$t= -E(VW)/E(W^2)$。
+\begin{equation}
+    V = -t W =  {E(VW)\over E(W^2)} W.
+\end{equation}
+
+即当$V=c W$ 时，等号成立($c$为任一常数)。
+\newpage
+\section{补充题}
+\subsection{}
+假定每人生日在各个月份的机会是相同的, 求 3 个人中生日在第 1 个季度的 平均人数。
+
+解：设$X$为三个人中生日在第一季度的人数，$X = 0, 1, 2, 3$，则$X\sim b(3, 0.25)$，因此$X$的分布律为
+\begin{center}
+    \begin{tabular}{c|cccc}
+        $X$ & 0 & 1 & 2 & 3 \\
+        \hline
+        $p_k$ & $\frac{27}{64}$ & $\frac{27}{64}$ & $\frac{9}{64}$ & $\frac{1}{64}$
+    \end{tabular}
+\end{center}
+
+因此$X$的数学期望为
+\begin{equation}
+    E(X) = \sum_{k}kp_k = 0.75.
+\end{equation}
+
+\subsection{}
+假设随机变量 $X$ 均匀分布于区间 $[\alpha, \beta], \alpha, \beta>0$ 。
+（1）求 $E[1 / x]$;
+（2）求 $1 / E[x]$ 。
+
+解：设随机变量 $X$ 的分布律为
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline$X$ & $-1$ & 1 & 2 & 3 \\
+\hline$p$ & $a$ & $0.2$ & $b$ & $0.1$ \\
+\hline
+\end{tabular}
+
+\end{center}
+
+且 $E(X)=1$, 试求:（1）常数 $\boldsymbol{a}, \boldsymbol{b}$ 的值;（2） $\boldsymbol{D}\left(\frac{1}{\mathrm{X}}\right)$
+
+(1) 
+\begin{align}
+    E\left(\frac{1}{x}\right) &= \int_{\alpha}^{\beta} \frac{1}{x}\frac{1}{\beta - \alpha} \text{d} x \nonumber \\
+                              &= \frac{\ln(\beta/\alpha)}{\beta - \alpha}.
+\end{align}
+
+(2)
+\begin{align}
+    1 / E(x) &= 1 / \int_{\alpha}^{\beta} x \frac{1}{\beta - \alpha} \text{d} x \nonumber \\
+             &= \frac{2}{\alpha + \beta}.
+\end{align}
+
+(1)
+\begin{align}
+    a + 0.2 + b + 0.1 &= 1, \\
+    E(x) = -a + 0.2 + 2b + 0.3 &= 1,
+\end{align}
+解得
+\begin{equation}
+    a = 0.3,~b = 0.4.
+\end{equation}
+
+(2) 随机变量$Y = \displaystyle\frac{1}{X}$的分布律为
+\begin{center}
+    \begin{tabular}{c|cccc}
+        $Y = \frac{1}{X}$ & -1 & $\frac{1}{3}$ & $\frac{1}{2}$ & 1 \\
+        \hline
+        $p_k$ & 0.3 & 0.1 & 0.4 & 0.2 
+    \end{tabular}
+\end{center}
+
+则$E(Y) = \displaystyle\sum_{k}kp_k = \displaystyle\frac{2}{15}$，
+\begin{align}
+    D(Y) &= \sum_k (k - E(Y))^2p_k \nonumber \\
+         &= 0.593.
+\end{align}
+
+
+\subsection{}
+设 $X_{1}, X_{2}$ 独立同分布, 且都取正值。证明: $E\left(X_{1} / X_{2}\right) \geq 1$, 等号成立当且仅 当 $X_{1}, X_{2}$ 只取一个值。(提示: 使用柯西-施瓦茨不等式)
+
+证明：
+由柯西-施瓦茨不等式
+\begin{equation}
+    E({1\over X_2}) E(X_2) = E(({1\over \sqrt{X_2}})^2) E((\sqrt{X_2})^2)\geq E(1)^2 = 1.
+\end{equation}
+
+等号成立当且仅当存在常数，$\sqrt{X_2} = c/\sqrt{X_2}$，即$X_2=c$时成立。$X_1,X_2$独立，则$X_1, 1/X_2$也独立，所以
+\begin{equation}
+    E(X_1/X_2) = E(X_1)E(1/X_2) \geq E(X_1)/E(X_2) = 1.
+\end{equation}
+
+等号成立当且仅当$X_1, X_2$只取一个常数$c$时成立。
+
+\subsection{}
+\textbf{切比雪夫不等式：}设随机变量X的数学期望和方差都存在,则对任意常数 $\varepsilon>0$,有
+$$
+\mathrm{P}(|X-E X| \geq \varepsilon) \leq \frac{\operatorname{D}(X)}{\varepsilon^{2}} \quad \text { 或 } \quad \mathrm{P}(|X-E X| \geq \varepsilon) \geq 1-\frac{\operatorname{D}(X)}{\varepsilon^{2}}
+$$
+
+请证明：存在 $\varepsilon_{0}>0$ 使得等号成立的充要条件为 $P\left(X=E X-\varepsilon_{0}\right)=\frac{1-p}{2}, P\left(X=E X+\varepsilon_{0}\right)=\frac{1-p}{2}$, 其中 $p=P(X=E X)$.
+
+证明:
+
+
+$\mathrm{I}$ 、 充分性: 如果随机变量满足:
+
+\begin{flushleft}
+$$P\left(X=E X-\varepsilon_{0}\right)=\frac{1-p}{2}$$
+$$P(X=E X)=p$$
+$$P\left(X=E X+\varepsilon_{0}\right)=\frac{1-p}{2}$$ 则:
+$$
+P\left(|X-E X| \geq \varepsilon_{0}\right)=P\left(|X-E X|=\varepsilon_{0}\right)=P\left(X=E X+\varepsilon_{0}\right)+P\left(X=E X-\varepsilon_{0}\right)=1-p
+$$
+$$\operatorname{Var}(X)=E(X-E X)^{2}=\varepsilon_{0}^{2} \frac{1-p}{2}+\left(-\varepsilon_{0}\right)^{2} \frac{1-p}{2}+0^{2} p=(1-p) \varepsilon_{0}^{2}$$
+ 由此可得:
+$$
+\mathrm{P}\left(|X-E X| \geq \varepsilon_{0}\right)=\frac{\operatorname{Var}(X)}{\varepsilon_{0}^{2}}
+$$
+\end{flushleft}
+II 、必要性: 设随机变量 $\mathrm{X}$ 的分布函数为 $\mathrm{F}_{\mathrm{X}}(\mathrm{x})$
+
+由题设可知 
+$$\varepsilon_{0}^{2} P\left(|X-E X| \geq \varepsilon_{0}\right)=\operatorname{Var}(X)$$
+而
+$$\operatorname{Var}(X) = \int_{|x-E X |< \varepsilon_{0}}(x-E X)^{2} d F_{X}(x)+\int_{|x-E X |\geq \varepsilon_{0}}(x-E X)^{2} d F_{X}(x)$$
+假设 $P\left(0<| X-E X | <\varepsilon_{0}\right)>0$ 则 :
+$$\int_{0<| x-E X|<\varepsilon_{0}}(x-E X)^{2} d F_{X}(x)>0$$ 
+于是有:
+$$\operatorname{Var}(X) \geq \int_{| x-E X |< \varepsilon_{0}}(x-E X)^{2} d F_{X}(x)+\varepsilon_{0}^{2} P\left(|X-E X |\geq \varepsilon_{0}\right)>\varepsilon_{0}^{2} P\left(|X-E X| \geq \varepsilon_{0}\right)$$
+ 与题设矛盾, 故 $P\left(0<|X-E X |< \varepsilon_{0}\right)=0$, 由前面证明可知
+$$
+\operatorname{Var}(X)=\int_{|x-E X| \geq \varepsilon_{0}}(x-E X)^{2} d F_{X}(x)
+$$
+假设 $P=\left(|X-E X|>\varepsilon_{0}\right)>0$,则得:$$\int_{|x-E X| > \varepsilon_{0}}(x-E X)^{2} d F_{x}(x)>0$$
+于是有 
+$$
+\operatorname{Var}(X)=\varepsilon_{0}^{2} P\left(|X-E X|=\varepsilon_{0}\right)+\int_{|x-E X|>\varepsilon_0}(x-E X)^{2} d F_{X}(x)>\varepsilon_{0}^{2} P\left(|X-E X|=\varepsilon_{0}\right)
+$$
+这与题设矛盾, 故 $P=\left(|X-E X|>\varepsilon_{0}\right)=0$, 于是得到:
+$$
+\begin{aligned}
+&P=\left(|X-E X|=\varepsilon_{0}\right)=1-P(|X-E X|=0)=1-p \\ \text { 即 } \\
+&P\left(X=E X-\varepsilon_{0}\right)=\frac{1-p}{2}\\
+&P\left(X=E X+\varepsilon_{0}\right)=\frac{1-p}{2}\\
+&p=P(X=E X)
+\end{aligned}
+$$
+
+\subsection{}
+考虑 $N$ 个服从多项分布的随机变量 $\mathbf{n}=\left(n_{1}, \ldots, n_{N}\right)$, 概率为 $\mathbf{p}=\left(p_{1}, \ldots, p_{N}\right).$, 并且总试验次数 为 $n_{\text {tot }}=\sum_{i=1}^{N} n_{i}$ 。假设变量 $k$ 定义为前 $M$ 个 $n_{i}$ 之和,
+$$
+k=\sum_{i=1}^{M} n_{i}, \quad M \leq N
+$$
+利用误差传递以及多项分布的协方差
+$$
+\operatorname{cov}\left[n_{i}, n_{j}\right]=\delta_{i j} n_{\text {tot }} p_{i}\left(1-p_{i}\right)+\left(\delta_{i j}-1\right) p_{i} p_{j} n_{\text {tot }}
+$$
+求 $k$ 的方差。证明该方差等于 $p=\sum_{i=1}^{M} p_{i}$ 并且总试验次数为 $n_{\mathrm{tot}}$ 的二项分布的方差。
+
+\subsection{}
+考虑两个随机变量 $x$ 和 $y$ .
+
+
+(a) 证明 $\alpha x+y$ 的方差为
+$$
+\begin{aligned}
+V[\alpha x+y] &=\alpha^{2} V[x]+V[y]+2 \alpha \operatorname{cov}[x, y] \\
+&=\alpha^{2} V[x]+V[y]+2 \alpha \rho \sigma_{x} \sigma_{y}
+\end{aligned}
+$$
+其中 $\alpha$ 为任意常数, $\sigma_{x}^{2}=D[x], \sigma_{y}^{2}=D[y]$, 关联系数 $\rho=\operatorname{cov}[x, y] / \sigma_{x} \sigma_{y}$ .
+
+(b) 利用 $(a)$ 的结果，证明关联系数总是位于区间 $-1 \leq \rho \leq 1$ 
+\end{document}

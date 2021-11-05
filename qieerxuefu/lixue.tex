@@ -1,0 +1,79 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage{fontspec}
+\defaultfontfeatures{Mapping=tex-text}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+\usepackage{xeCJK}
+\usepackage{ctex}
+\usepackage{polyglossia}
+\setdefaultlanguage{english}
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}%中文缩进两个汉字位
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{siunitx}
+\usepackage{float}
+\usepackage{varioref}
+\usepackage{cite}
+\usepackage[colorlinks,linkcolor=black,anchorcolor=black,citecolor=black]{hyperref}%设置链接的颜色均为黑色
+\usepackage{amsmath}
+ \usepackage{siunitx}
+\usepackage{geometry}
+
+\begin{document}\
+\textbf{切比雪夫不等式：}设随机变量X的数学期望和方差都存在,则对任意常数 $\varepsilon>0$,有
+$$
+\mathrm{P}(|X-E X| \geq \varepsilon) \leq \frac{\operatorname{Var}(X)}{\varepsilon^{2}} \quad \text { 或 } \quad \mathrm{P}(|X-E X| \geq \varepsilon) \geq 1-\frac{\operatorname{Var}(X)}{\varepsilon^{2}}
+$$
+存在 $\varepsilon_{0}>0$ 使得等号成立的充要条件为 $P\left(X=E X-\varepsilon_{0}\right)=\frac{1-p}{2}, P\left(X=E X+\varepsilon_{0}\right)=\frac{1-p}{2}$, 其中 $p=P(X=E X)$.
+
+
+\textbf{证明:}
+
+
+$\mathrm{I}$ 、 充分性: 如果随机变量满足:
+
+\begin{flushleft}
+$$P\left(X=E X-\varepsilon_{0}\right)=\frac{1-p}{2}$$
+$$P(X=E X)=p$$
+$$P\left(X=E X+\varepsilon_{0}\right)=\frac{1-p}{2}$$ 则:
+$$
+P\left(|X-E X| \geq \varepsilon_{0}\right)=P\left(|X-E X|=\varepsilon_{0}\right)=P\left(X=E X+\varepsilon_{0}\right)+P\left(X=E X-\varepsilon_{0}\right)=1-p
+$$
+$$\operatorname{Var}(X)=E(X-E X)^{2}=\varepsilon_{0}^{2} \frac{1-p}{2}+\left(-\varepsilon_{0}\right)^{2} \frac{1-p}{2}+0^{2} p=(1-p) \varepsilon_{0}^{2}$$
+ 由此可得:
+$$
+\mathrm{P}\left(|X-E X| \geq \varepsilon_{0}\right)=\frac{\operatorname{Var}(X)}{\varepsilon_{0}^{2}}
+$$
+\end{flushleft}
+II 、必要性: 设随机变量 $\mathrm{X}$ 的分布函数为 $\mathrm{F}_{\mathrm{X}}(\mathrm{x})$
+
+由题设可知 
+$$\varepsilon_{0}^{2} P\left(|X-E X| \geq \varepsilon_{0}\right)=\operatorname{Var}(X)$$
+而
+$$\operatorname{Var}(X) = \int_{|x-E X |< \varepsilon_{0}}(x-E X)^{2} d F_{X}(x)+\int_{|x-E X |\geq \varepsilon_{0}}(x-E X)^{2} d F_{X}(x)$$
+假设 $P\left(0<| X-E X | <\varepsilon_{0}\right)>0$ 则 :
+$$\int_{0<| x-E X|<\varepsilon_{0}}(x-E X)^{2} d F_{X}(x)>0$$ 
+于是有:
+$$\operatorname{Var}(X) \geq \int_{| x-E X |< \varepsilon_{0}}(x-E X)^{2} d F_{X}(x)+\varepsilon_{0}^{2} P\left(|X-E X |\geq \varepsilon_{0}\right)>\varepsilon_{0}^{2} P\left(|X-E X| \geq \varepsilon_{0}\right)$$
+ 与题设矛盾, 故 $P\left(0<|X-E X |< \varepsilon_{0}\right)=0$, 由前面证明可知
+$$
+\operatorname{Var}(X)=\int_{|x-E X| \geq \varepsilon_{0}}(x-E X)^{2} d F_{X}(x)
+$$
+假设 $P=\left(|X-E X|>\varepsilon_{0}\right)>0$,则得:$$\int_{|x-E X| > \varepsilon_{0}}(x-E X)^{2} d F_{x}(x)>0$$
+于是有 
+$$
+\operatorname{Var}(X)=\varepsilon_{0}^{2} P\left(|X-E X|=\varepsilon_{0}\right)+\int_{|x-E X|>\varepsilon_0}(x-E X)^{2} d F_{X}(x)>\varepsilon_{0}^{2} P\left(|X-E X|=\varepsilon_{0}\right)
+$$
+这与题设矛盾, 故 $P=\left(|X-E X|>\varepsilon_{0}\right)=0$, 于是得到:
+$$
+\begin{aligned}
+&P=\left(|X-E X|=\varepsilon_{0}\right)=1-P(|X-E X|=0)=1-p \\ \text { 即 } \\
+&P\left(X=E X-\varepsilon_{0}\right)=\frac{1-p}{2}\\
+&P\left(X=E X+\varepsilon_{0}\right)=\frac{1-p}{2}\\
+&p=P(X=E X)
+\end{aligned}
+$$
+\end{document}
+

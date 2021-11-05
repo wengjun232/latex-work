@@ -1,0 +1,96 @@
+
+\documentclass[UTF8,a4paper,10pt]{ctexart}
+\usepackage[left=2.50cm, right=2.50cm, top=2.50cm, bottom=2.50cm]{geometry}
+
+% -- text font --
+% compile using Xelatex
+
+%\setmainfont{Microsoft YaHei}  % 微软雅黑
+%\setmainfont{YouYuan}  % 幼圆    
+%\setmainfont{NSimSun}  % 新宋体
+%\setmainfont{KaiTi}    % 楷体
+%\setmainfont{SimSun}   % 宋体
+%\setmainfont{SimHei}   % 黑体
+
+\usepackage{times}
+\usepackage{diagbox}
+%\usepackage{mathpazo}
+%\usepackage{fourier}
+%\usepackage{charter}
+%\usepackage{helvet}
+
+\usepackage{amsmath, amsfonts, amssymb} % math equations, symbols
+\usepackage[english]{babel}
+\usepackage{color}      % color content
+\usepackage{graphicx}   % import figures
+\usepackage{url}        % hyperlinks
+\usepackage{bm}         % bold type for equations
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{epstopdf}
+\usepackage{epsfig}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+%\renewcommand{\algorithmicrequire}{ \textbf{Input:}}     % use Input in the format of Algorithm  
+%\renewcommand{\algorithmicensure}{ \textbf{Initialize:}} % use Initialize in the format of Algorithm  
+%\renewcommand{\algorithmicreturn}{ \textbf{Output:}}     % use Output in the format of Algorithm  
+
+\def\deriv{d\,}
+\usepackage{fancyhdr}   % 设置页眉、页脚
+\pagestyle{fancy}
+\lhead{2021概率论统计分析及量测技术作业}
+\chead{}
+\rhead{第五章：大数定律和中心极限定理}
+\cfoot{\thepage}
+   
+
+\usepackage{hyperref}   % bookmarks
+\hypersetup{colorlinks, bookmarks, unicode} % unicode
+
+
+\title{第四章作业}
+%\author{ 作者 Author \thanks{作者介绍 Brief introduction} }
+%\date{\today}
+
+\begin{document}
+\section{课本习题}
+\subsection{129/7}
+一食品店有三种蛋糕出售,由于售出哪一种蛋糕是随机的, 因而售出一只蛋糕的价格是一个随机变量,它取 1 元、 $1.2$ 元 $、 1.5$ 元各个值的概率分别为 $0.3,0,2,0.5$. 若售出 300 只蛋糕.
+
+
+(1) 求收入至少 400 元的概率.
+
+
+(2) 求售出价格为 $1.2$ 元的蛋糕多于 60 只的概率.
+
+
+\subsection{129/9}
+ 已知在某十字路口,一周事故发生数的数学期望为 $2.2$, 标准差为 $1.4$.
+ 
+ 
+(1) 以 $\bar{X}$ 表示一年(以 52 周计)此十字路口事故发生数的算术平均,试用中心极限定理 求 $\bar{X}$ 的近似分布, 并求 $P\{\bar{X}<2\}$.
+
+
+(2) 求一年事故发生数小于 100 的概率.
+
+\subsection{129/11}
+ 随机地选取两组学生, 每组 80 人, 分别在两个实验室里测量某种化合物的 $\mathrm{pH}$. 各人 测量的结果是随机变量, 它们相互独立,服从同一分布, 数学期望为 5 ,方差为 $0.3$, 以 $\bar{X}, \bar{Y}$ 分 别表示第一组和第二组所得结果的算术平均.
+ 
+ 
+（1）求$P(4.9<\bar{X}<5.1)$
+
+
+(2)求$P(-0.1<\bar{X}-\bar{Y}<0.1)$
+
+\section{补充题}
+\subsection{}
+现有一批建筑房屋用的木材, 其中 $80 \%$ 的长度不小于 $3 \mathrm{~m}$ 。现从这批木材中 随机抽取 100 根 试用如下两种方法分别计算其中短于 $3 \mathrm{~m}$ 的木材数在 $15 \sim 25$ 的概率:
+
+（1）用切比雪夫不等式估计；
+
+
+（2）用中心极限定理计算。
+
+\subsection{}
+设 $\left(X_{1}, X_{2}, \cdots, X_{n}\right)$ 为来自泊松分布 $\pi(\lambda)$ 的一个样本, $\bar{X}, S^{2}$ 分别为样本均 值和方差, 求 $\boldsymbol{E}(\overline{\boldsymbol{X}}), \boldsymbol{D}(\overline{\boldsymbol{X}}) 、 \boldsymbol{E}\left(\boldsymbol{S}^{2}\right)$ 。
+\end{document}
